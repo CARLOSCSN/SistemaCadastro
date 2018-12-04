@@ -7,6 +7,7 @@ using HtmlTags.Conventions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.DependencyInjection;
 
+// teste commit
 namespace SistemaCadastro.Pages
 {
     public static class HtmlHelperExtensions

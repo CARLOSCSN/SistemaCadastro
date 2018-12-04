@@ -1,0 +1,91 @@
+﻿@page "{id:int}"
+
+@using Microsoft.AspNetCore.Http
+@model Itens.Edit
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<div class="row">
+    <div class="offset-md-1 col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header text-white" style="background-color:#84b7ef!important">
+                <h4 class="card-title text-uppercase">Editar Item</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" id="needs-validation" role="form" novalidate>
+                    @Html.HiddenFor(m => m.Data.Id)
+                    @Html.HiddenFor(m => m.Data.LoginID)
+                    @Html.HiddenFor(m => m.Data.DataInclusao)
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Nome</label>
+                                <input type="text" id="Data_Nome" name="Data.Nome" value="@Model.Data.Nome" maxlength="40" placeholder="Nome" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um nome.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Tipo</label>
+                                <input type="text" id="Data_Tipo" name="Data.Tipo" value="@Model.Data.Tipo" maxlength="15" placeholder="Tipo" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um tipo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Valor</label>
+                                <input type="text" id="Data_Valor" name="Data.Valor" value="@Model.Data.Valor" maxlength="5" placeholder="Valor" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um valor.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12">
+                        <div class="float-right">
+                            <button class="btn btn-primary" onclick="return ReturnListItem();">Voltar para Lista</button>
+                            <button class="btn btn-primary" type="submit" value="Save">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var form = document.getElementById('needs-validation');
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }, false);
+    })();
+
+    $('[name="Data.Valor"]').keyup(function () {
+        $(this).val(this.value.replace(/\D/g, ''));
+    });
+
+    // Return page defined
+    function ReturnListItem() {
+
+        window.location.href = '/Itens/Index';
+    }
+</script>

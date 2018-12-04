@@ -1,0 +1,100 @@
+﻿@page "{handler?}"
+
+@model IndexModel
+
+@{
+    ViewBag.Title = "ASP.NET Core Razor Pages - Sistema de Cadastro";
+}
+
+<div class="row" id="loginPage" style="display: none;margin-top: 50px;">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+        <section>
+            <form method="post" role="form" class="form-horizontal">
+                @Html.AntiForgeryToken()
+                <h2>@ViewBag.Title.</h2>
+                <h4>Use uma conta local para fazer login.</h4>
+                <hr />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <div class="text-gray-dark"><b>Nome</b></div>
+                        <input id="LoginModel_Username" name="LoginModel.Username" class="form-control" type="text" placeholder="Nome" style="margin-bottom: 10px;" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <div class="text-gray-dark"><b>Senha</b></div>
+                        <input id="LoginModel_Password" name="LoginModel.Password" class="form-control" type="password" placeholder="Senha" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="login_register_btn" type="button" style="float: left;" class="btn btn-link">Criar uma conta</button>
+                        <button asp-page-handler="LogIn" id="btn_entrar" class="btn btn-default" style="float: right;">Entrar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+<div class="row" id="CreateLogin" style="display: none;margin-top: 50px;">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+        <!-- Begin | Register Form -->
+        <form method="post" id="register-form">
+            <div class="modal-body">
+                <h1 class="h3 mb-3 font-weight-normal">Criar conta</h1>
+                <div class="form-group">
+                    Nome
+                    <input id="LoginModel_Username2" name="LoginModel.Username" class="form-control" type="text" placeholder="Nome" style="margin-bottom: 10px;" required>
+                </div>
+
+                <div class="form-group">
+                    Senha
+                    <input id="LoginModel_Password2" name="LoginModel.Password" class="form-control" type="password" placeholder="Senha" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-6">
+                    <button id="register_login_btn" type="button" class="btn btn-link" style="float: left">Voltar</button>
+                </div>
+                <div class="col-6">
+                    <button asp-page-handler="CreateLogin" id="registrar" name="registrar" class="btn btn-default" style="float: right;">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#loginPage').show();
+
+        $("#login_register_btn").click(function () {
+            $('#loginPage').hide();
+            $('#CreateLogin').show();
+        });      
+
+        $("#register_login_btn").click(function () {
+            window.location.replace("/");
+        });    
+    });
+
+</script>

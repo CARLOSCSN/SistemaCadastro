@@ -1,0 +1,58 @@
+﻿@page
+@model Pages.Itens.Index
+@{
+    ViewData["Title"] = "Itens";
+}
+<h2>Itens</h2>
+<p>
+    <a asp-page="Create">Criar novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Data Inclusão</th>
+            <th>Usuario Inclusão</th>
+            <th>Operações</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Data != null)
+        {
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].DataInclusao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Data[i].LoginNome)
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-page="Details" asp-route-id="@item.Id">Detalhes</a> |
+                        <a asp-page="Delete" asp-route-id="@item.Id">Deletar</a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

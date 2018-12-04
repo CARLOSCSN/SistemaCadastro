@@ -1,0 +1,64 @@
+﻿@page "{id:int}"
+@model Itens.Delete
+
+@{
+    ViewData["Title"] = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Tem certeza de que deseja excluir este?</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <display-tag class="text-gray-dark">Nome:</display-tag>
+            <display-label-tag for="Data.Nome" />
+        </dt>
+        <dd>
+            <display-tag for="Data.Nome" />
+            <br />
+        </dd>
+        <dt>
+            <display-tag class="text-gray-dark">Tipo:</display-tag>
+            <display-label-tag for="Data.Tipo" />
+        </dt>
+        <dd>
+            <display-tag for="Data.Tipo" />
+            <br />
+        </dd>
+        <dt>
+            <display-tag class="text-gray-dark">Valor:</display-tag>
+            <display-label-tag for="Data.Valor" />
+        </dt>
+        <dd>
+            <display-tag for="Data.Valor" />
+            <br />
+        </dd>
+        <dt>
+            <display-tag class="text-gray-dark">Data Inclusão:</display-tag>
+            <display-label-tag for="Data.DataInclusao" />
+        </dt>
+        <dd>
+            <display-tag for="Data.DataInclusao" />
+            <br />
+        </dd>
+        <dt>
+            <display-tag class="text-gray-dark">Usuário Inclusão:</display-tag>
+            <display-label-tag for="Data.LoginNome" />
+        </dt>
+        <dd>
+            <display-tag for="Data.LoginNome" />
+            <br />
+            <br />
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Data.Id" />
+        <input type="hidden" asp-for="Data.RowVersion" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="Index">Voltar para Lista</a>
+    </form>
+</div>

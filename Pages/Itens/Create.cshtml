@@ -1,0 +1,86 @@
+﻿@page
+
+@model Itens.Create
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="offset-md-1 col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header text-white" style="background-color:#84b7ef!important">
+                <h4 class="card-title text-uppercase">Criar Item</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" id="needs-validation" role="form" novalidate>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Nome</label>
+                                <input type="text" id="Data_Nome" name="Data.Nome" placeholder="Nome" maxlength="40" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um nome.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Tipo</label>
+                                <input type="text" id="Data_Tipo" name="Data.Tipo" placeholder="Tipo" maxlength="15" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um tipo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 col-xs-7">
+                            <div class="form-group">
+                                <label for="firstname">Valor</label>
+                                <input type="text" id="Data_Valor" name="Data.Valor" placeholder="Valor" maxlength="5" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Por favor insira um valor.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="float-right">
+                                <button class="btn btn-danger" onclick="return ReturnCreateItem();">Cancelar</button>
+                                <button class="btn btn-primary" type="submit" value="Create">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var form = document.getElementById('needs-validation');
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }, false);
+    })();
+
+    $('[name="Data.Valor"]').keyup(function () {
+        $(this).val(this.value.replace(/\D/g, ''));
+    });
+
+    // Reload page
+    function ReturnCreateItem() {
+        location.reload();
+    }
+</script>  

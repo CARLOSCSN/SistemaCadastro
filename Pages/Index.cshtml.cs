@@ -135,6 +135,9 @@ namespace SistemaCadastro.Pages
             }
             catch (Exception ex)
             {
+                // teste error
+                ModelState.AddModelError(string.Empty, "Nome ou Senha estão incorretos.");
+
                 // Info
                 Console.Write(ex);
             }

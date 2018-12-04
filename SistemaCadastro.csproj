@@ -60,7 +60,7 @@
   <ItemGroup>
     <Folder Include="Pages\Itens\" />
     <Folder Include="Pages\Shared\" />
-    <Folder Include="ScriptRodarDepoisCriarBD\" />
+    <Folder Include="ScriptRodarParaCriarEstrutura\" />
   </ItemGroup>
   
   <ItemGroup>
